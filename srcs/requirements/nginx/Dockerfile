@@ -10,7 +10,8 @@ RUN apt-get update \
     && chmod 400 /etc/ssl/private/nginx-selfsigned.key \
     && openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048 \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.original
 
 COPY ./conf/nginx.conf /etc/nginx/
 
