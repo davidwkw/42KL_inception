@@ -36,6 +36,8 @@ if [ $(ls -1A /var/www/ | wc -l) -eq 0 ]; then
 		wp user create $WP_USER $WP_USER_EMAIL --role=$WP_USER_ROLE --user_pass=$WP_USER_PASSWORD --allow-root --quiet
 	fi
 	wp plugin install redis-cache --activate --allow-root
+	echo "Enabling redis cache.."
+	wp redis enable --allow-root
 	echo "Finished setting up wordpress"
 fi
 
