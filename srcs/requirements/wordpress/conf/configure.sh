@@ -50,4 +50,8 @@ sed -i "s/^;\s*ping.path\s*=\s*\/ping/ping.path = \/ping/g" /etc/php/7.3/fpm/poo
 sed -i "s/^;\s*ping.response\s*=\s*pong/ping.response = pong/g" /etc/php/7.3/fpm/pool.d/www.conf
 echo "Finished setting up fpm-cgi"
 
+echo "Setting up php.ini..."
+sed -i "s/^;\s*cgi.fix_pathinfo=[0-9]/cgi.fix_pathinfo=0/g" /etc/php/7.3/fpm/php.ini
+echo "Finished setting up php.ini"
+
 exec "$@"

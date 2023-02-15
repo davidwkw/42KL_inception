@@ -20,7 +20,7 @@ build-nginx:
 	docker build -t nginx-test ./srcs/requirements/nginx/.
 
 run-nginx: build-nginx
-	docker run -dit -p 443:443 nginx-test
+	docker run -dit -p 443:443 --env-file ./srcs/.env --name nginx nginx-test
 
 compose:
 	docker compose up -d --build
@@ -30,8 +30,6 @@ clean:
 
 fclean:
 	docker compose down
-	rm -f ./db_data
-	rm -f ./wp_data
 
 re:	clean compose
 
